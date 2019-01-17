@@ -1,0 +1,40 @@
+2-5 如何快速找到多个字典中的公共键
+实际案例：
+西班牙足球甲级联赛，每轮球员进球统计：
+第一轮：{'苏亚雷斯':1, '梅西':2, '本泽马':1, 'C罗':3...}
+第二轮：{'苏亚雷斯':2, 'C罗':1, '格里兹曼':2, '内马尔':1...}
+第三轮：{'苏亚雷斯':1, '托雷斯':2, '贝尔':1, '内马尔':1...}
+...
+统计出前N轮，每场比赛都有进球的球员
+
+解决方案：
+利用集合(set)的交集操作
+step1：使用字典keys()方法，得到一个字典keys的集合
+step2：使用map函数，得到所有字典的keys的集合
+step3：使用reduce函数，取所有字典的keys的集合交集
+
+
+from random import randint, sample
+s1 = {x: randint(1, 4) for x in sample('abcdefg', randint(3, 6))}
+s2 = {x: randint(1, 4) for x in sample('abcdefg', randint(3, 6))}
+s3 = {x: randint(1,4) for x in sample('abcdefg', randint(3, 6))}
+
+方法一：利用迭代求得结果
+res = []
+for k in s1:
+    if k in s2 and k in s3:
+        res.append(k)
+
+方法二：利用上述解决方案
+from functools import redece 
+reduce(lambda a, b: a& b, map(dict.keys, [s1, s2, s3]))
+
+
+
+
+
+
+
+
+
+
