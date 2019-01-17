@@ -1,0 +1,27 @@
+Map
+map会将一个函数映射到一个输入列表的所有元素上。
+规范：
+map(function_to_apply, list_of_inputs)
+大多数我们需要把列表中所有元素一个个地传递给一个函数，并收集输出。比如：
+items = [1, 2, 3, 4, 5]
+squared = []
+for i in items:
+	squared.append(i**2)
+而map可以让我们用一种简洁的方式实现：
+items = [1, 2, 3, 4, 5]
+squared = list(map(lambda x: x**2, items))
+大多数时候，我们使用匿名函数（lambdas）来配合map。
+
+
+Filter
+filter是过滤列表中元素的函数，并且返回一个由所有符合要求的元素所构成的列表，符合要求就是说映射到该元素时返回值为True。比如：
+number_list = range(-5, 5)
+less_than_zero = filter(lambda x: x < 0, number_list)
+print(list(less_than_zero))
+上述代码是将(-5, 5)之间大于0的都过滤掉，lambda x: x < 0 只有当x小于零是才输出True。
+
+
+Reduce
+当需要对一个列表进行一些计算并返回结果时，reduce是一个很好的函数。当你需要计算一整数列表的乘积时：
+from functools import reduce
+product = reduce((lambda x, y: x * y), [1, 2, 3, 4])

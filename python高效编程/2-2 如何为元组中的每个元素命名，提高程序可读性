@@ -1,0 +1,30 @@
+实际案例：
+学生信息系统中数据为固定格式：
+（名字，年龄，性别，邮箱，...）
+
+学生数据量很大为了减小存储开销，对每个学生信息用元组表示：
+('Jim', '16', 'male', 'Jim8721@gmail.com')
+('LiLei', '17', 'male', 'Leile@qq.com')
+('Lucy', '16', 'female', 'lucy123@yahoo.com')
+...
+
+访问时，我们使用索引(index)访问，大量索引降低程序的可读性。
+
+解决方案：
+方案一：定义类似其他语言的枚举类型，也就是定义一系列数值常量
+NAME, AGE, SEX, EMAIL = range(4)
+student = ('Jim', 16, 'male', 'Jim8721@gmail.com')
+# name 
+student[NAME]
+# age
+studnet[AGE]
+# sex
+student[SEX]
+# email
+student[EMAIL]
+
+方案二：使用标准库中collections.namedtuple替代内置tuple
+from collections import namedtuple
+Student = namedtuple('Studeng', ['name', 'age', 'sex', 'email'])
+s = Student('Jim', 16, 'male', 'Jim8721@gmail.com')
+# 利用s.name可访问name，以此类推

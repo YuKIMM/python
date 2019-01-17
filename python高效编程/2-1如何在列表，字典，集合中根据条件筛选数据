@@ -1,0 +1,23 @@
+2-1 如何在列表、字典、集合中根据条件筛选数据
+过滤数据中的负数
+
+列表：
+		生成随机列表
+		# from random import randint
+		# data = [randint(-10, 10) for i in range(10)]
+
+		filter法：filter(lambda x: x >= 0, data)  
+		列表解析法：[x for x in data if x >= 0]
+
+
+字典：
+		生成随机字典
+		# d = {x: randint(60, 100) for x in range(21)}
+
+		字典解析法：{k: v for k, v in d.iterms() if v >= 90}
+
+集合：
+		生成随机集合
+		# data = { randint(-10, 10) for x in range(10)}
+
+		集合解析法：{x for x in data if x >= 0}
